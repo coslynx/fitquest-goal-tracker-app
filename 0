@@ -1,0 +1,72 @@
+// src/types/index.ts
+
+export interface User {
+  id: string;
+  username: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Goal {
+  id: string;
+  userId: string;
+  name: string;
+  description: string;
+  target: number;
+  progress: number;
+  unit: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
+}
+
+
+export interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  style?: React.CSSProperties;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+export interface InputProps {
+  type: string;
+  placeholder?: string;
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  style?: React.CSSProperties;
+}
+
+
+export interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    children: React.ReactNode;
+  }
+
+  export interface CardProps {
+    children: React.ReactNode;
+    style?: React.CSSProperties
+  }
+
+  export interface GoalFormProps {
+    onGoalCreated: () => void;
+    initialGoal?: Goal;
+
+  }
+
+  export interface GoalCardProps {
+      goal: Goal
+  }
+
+export interface UseFetchResult<T> {
+  data: T | null;
+  loading: boolean;
+  error: string | null;
+  fetchData: (url: string, options?: RequestInit) => Promise<void>;
+}
